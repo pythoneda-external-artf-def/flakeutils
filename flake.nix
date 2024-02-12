@@ -69,7 +69,8 @@
           builtins.replaceStrings [ "\n" ] [ "" ] "nixos-${nixosVersion}";
         shared = import "${pythoneda-shared-pythonlang-banner}/nix/shared.nix";
         pkgs = import nixos { inherit system; };
-        flakeutils-for = { python, pythoneda-shared-nix-flake-shared
+        pythoneda-external-artf-flakeutils-for = { python
+          , pythoneda-shared-nix-flake-shared
           , pythoneda-shared-pythonlang-banner
           , pythoneda-shared-pythonlang-domain }:
           let
@@ -194,21 +195,25 @@
       in rec {
         apps = rec {
           default = flakeutils-default;
-          flakeutils-default = flakeutils-python311;
-          flakeutils-python38 = shared.app-for {
-            package = self.packages.${system}.flakeutils-python38;
+          flakeutils-default = pythoneda-external-artf-flakeutils-python311;
+          pythoneda-external-artf-flakeutils-python38 = shared.app-for {
+            package =
+              self.packages.${system}.pythoneda-external-artf-flakeutils-python38;
             inherit entrypoint;
           };
-          flakeutils-python39 = shared.app-for {
-            package = self.packages.${system}.flakeutils-python39;
+          pythoneda-external-artf-flakeutils-python39 = shared.app-for {
+            package =
+              self.packages.${system}.pythoneda-external-artf-flakeutils-python39;
             inherit entrypoint;
           };
-          flakeutils-python310 = shared.app-for {
-            package = self.packages.${system}.flakeutils-python310;
+          pythoneda-external-artf-flakeutils-python310 = shared.app-for {
+            package =
+              self.packages.${system}.pythoneda-external-artf-flakeutils-python310;
             inherit entrypoint;
           };
-          flakeutils-python311 = shared.app-for {
-            package = self.packages.${system}.flakeutils-python311;
+          pythoneda-external-artf-flakeutils-python311 = shared.app-for {
+            package =
+              self.packages.${system}.pythoneda-external-artf-flakeutils-python311;
             inherit entrypoint;
           };
         };
@@ -216,14 +221,14 @@
         defaultPackage = packages.default;
         devShells = rec {
           default = flakeutils-default;
-          flakeutils-default = flakeutils-python311;
-          flakeutils-python38 = shared.devShell-for {
+          flakeutils-default = pythoneda-external-artf-flakeutils-python311;
+          pythoneda-external-artf-flakeutils-python38 = shared.devShell-for {
             banner = "${
                 pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python38
               }/bin/banner.sh";
             extra-namespaces = "";
             nixpkgs-release = nixpkgsRelease;
-            package = packages.flakeutils-python38;
+            package = packages.pythoneda-external-artf-flakeutils-python38;
             python = pkgs.python38;
             pythoneda-shared-pythonlang-banner =
               pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python38;
@@ -231,13 +236,13 @@
               pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python38;
             inherit archRole layer org pkgs repo space;
           };
-          flakeutils-python39 = shared.devShell-for {
+          pythoneda-external-artf-flakeutils-python39 = shared.devShell-for {
             banner = "${
                 pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python39
               }/bin/banner.sh";
             extra-namespaces = "";
             nixpkgs-release = nixpkgsRelease;
-            package = packages.flakeutils-python39;
+            package = packages.pythoneda-external-artf-flakeutils-python39;
             python = pkgs.python39;
             pythoneda-shared-pythonlang-banner =
               pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python39;
@@ -245,13 +250,13 @@
               pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python39;
             inherit archRole layer org pkgs repo space;
           };
-          flakeutils-python310 = shared.devShell-for {
+          pythoneda-external-artf-flakeutils-python310 = shared.devShell-for {
             banner = "${
                 pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python310
               }/bin/banner.sh";
             extra-namespaces = "";
             nixpkgs-release = nixpkgsRelease;
-            package = packages.flakeutils-python310;
+            package = packages.pythoneda-external-artf-flakeutils-python310;
             python = pkgs.python310;
             pythoneda-shared-pythonlang-banner =
               pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python310;
@@ -259,13 +264,13 @@
               pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python310;
             inherit archRole layer org pkgs repo space;
           };
-          flakeutils-python311 = shared.devShell-for {
+          pythoneda-external-artf-flakeutils-python311 = shared.devShell-for {
             banner = "${
                 pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python311
               }/bin/banner.sh";
             extra-namespaces = "";
             nixpkgs-release = nixpkgsRelease;
-            package = packages.flakeutils-python311;
+            package = packages.pythoneda-external-artf-flakeutils-python311;
             python = pkgs.python311;
             pythoneda-shared-pythonlang-banner =
               pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python311;
@@ -276,43 +281,47 @@
         };
         packages = rec {
           default = flakeutils-default;
-          flakeutils-default = flakeutils-python311;
-          flakeutils-python38 = flakeutils-for {
-            python = pkgs.python38;
-            pythoneda-shared-nix-flake-shared =
-              pythoneda-shared-nix-flake-shared.packages.${system}.pythoneda-shared-nix-flake-shared-python38;
-            pythoneda-shared-pythonlang-banner =
-              pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python38;
-            pythoneda-shared-pythonlang-domain =
-              pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python38;
-          };
-          flakeutils-python39 = flakeutils-for {
-            python = pkgs.python39;
-            pythoneda-shared-nix-flake-shared =
-              pythoneda-shared-nix-flake-shared.packages.${system}.pythoneda-shared-nix-flake-shared-python39;
-            pythoneda-shared-pythonlang-banner =
-              pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python39;
-            pythoneda-shared-pythonlang-domain =
-              pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python39;
-          };
-          flakeutils-python310 = flakeutils-for {
-            python = pkgs.python310;
-            pythoneda-shared-nix-flake-shared =
-              pythoneda-shared-nix-flake-shared.packages.${system}.pythoneda-shared-nix-flake-shared-python310;
-            pythoneda-shared-pythonlang-banner =
-              pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python310;
-            pythoneda-shared-pythonlang-domain =
-              pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python310;
-          };
-          flakeutils-python311 = flakeutils-for {
-            python = pkgs.python311;
-            pythoneda-shared-nix-flake-shared =
-              pythoneda-shared-nix-flake-shared.packages.${system}.pythoneda-shared-nix-flake-shared-python311;
-            pythoneda-shared-pythonlang-banner =
-              pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python311;
-            pythoneda-shared-pythonlang-domain =
-              pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python311;
-          };
+          flakeutils-default = pythoneda-external-artf-flakeutils-python311;
+          pythoneda-external-artf-flakeutils-python38 =
+            pythoneda-external-artf-flakeutils-for {
+              python = pkgs.python38;
+              pythoneda-shared-nix-flake-shared =
+                pythoneda-shared-nix-flake-shared.packages.${system}.pythoneda-shared-nix-flake-shared-python38;
+              pythoneda-shared-pythonlang-banner =
+                pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python38;
+              pythoneda-shared-pythonlang-domain =
+                pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python38;
+            };
+          pythoneda-external-artf-flakeutils-python39 =
+            pythoneda-external-artf-flakeutils-for {
+              python = pkgs.python39;
+              pythoneda-shared-nix-flake-shared =
+                pythoneda-shared-nix-flake-shared.packages.${system}.pythoneda-shared-nix-flake-shared-python39;
+              pythoneda-shared-pythonlang-banner =
+                pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python39;
+              pythoneda-shared-pythonlang-domain =
+                pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python39;
+            };
+          pythoneda-external-artf-flakeutils-python310 =
+            pythoneda-external-artf-flakeutils-for {
+              python = pkgs.python310;
+              pythoneda-shared-nix-flake-shared =
+                pythoneda-shared-nix-flake-shared.packages.${system}.pythoneda-shared-nix-flake-shared-python310;
+              pythoneda-shared-pythonlang-banner =
+                pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python310;
+              pythoneda-shared-pythonlang-domain =
+                pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python310;
+            };
+          pythoneda-external-artf-flakeutils-python311 =
+            pythoneda-external-artf-flakeutils-for {
+              python = pkgs.python311;
+              pythoneda-shared-nix-flake-shared =
+                pythoneda-shared-nix-flake-shared.packages.${system}.pythoneda-shared-nix-flake-shared-python311;
+              pythoneda-shared-pythonlang-banner =
+                pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python311;
+              pythoneda-shared-pythonlang-domain =
+                pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python311;
+            };
         };
       });
 }
