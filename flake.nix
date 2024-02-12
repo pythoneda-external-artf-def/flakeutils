@@ -194,8 +194,9 @@
           };
       in rec {
         apps = rec {
-          default = flakeutils-default;
-          flakeutils-default = pythoneda-external-artf-flakeutils-python311;
+          default = pythoneda-external-artf-flakeutils-default;
+          pythoneda-external-artf-flakeutils-default =
+            pythoneda-external-artf-flakeutils-python311;
           pythoneda-external-artf-flakeutils-python38 = shared.app-for {
             package =
               self.packages.${system}.pythoneda-external-artf-flakeutils-python38;
@@ -220,8 +221,9 @@
         defaultApp = apps.default;
         defaultPackage = packages.default;
         devShells = rec {
-          default = flakeutils-default;
-          flakeutils-default = pythoneda-external-artf-flakeutils-python311;
+          default = pythoneda-external-artf-flakeutils-default;
+          pythoneda-external-artf-flakeutils-default =
+            pythoneda-external-artf-flakeutils-python311;
           pythoneda-external-artf-flakeutils-python38 = shared.devShell-for {
             banner = "${
                 pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python38
@@ -280,8 +282,9 @@
           };
         };
         packages = rec {
-          default = flakeutils-default;
-          flakeutils-default = pythoneda-external-artf-flakeutils-python311;
+          default = pythoneda-external-artf-flakeutils-default;
+          pythoneda-external-artf-flakeutils-default =
+            pythoneda-external-artf-flakeutils-python311;
           pythoneda-external-artf-flakeutils-python38 =
             pythoneda-external-artf-flakeutils-for {
               python = pkgs.python38;
