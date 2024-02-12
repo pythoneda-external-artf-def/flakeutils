@@ -1,0 +1,26 @@
+# GNU GENERAL PUBLIC LICENSE
+# Version 3, 29 June 2007
+#
+# Copyright (C) 2024-today rydnr https://github.com/pythoneda-external-artf/flakeutils
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+[tool.poetry]
+name = "@pname@"
+version = "@version@"
+description = "@desc@"
+authors = [ @authors@ ]
+packages = [{include = "@package@"}]
+
+[tool.poetry.dependencies]
+python = "^@pythonMajorMinorVersion@"
+pythoneda-shared-banner = "^@pythonedaSharedBanner@"
+pythoneda-shared-domain = "^@pythonedaSharedDomain@"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
