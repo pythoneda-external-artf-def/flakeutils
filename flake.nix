@@ -194,14 +194,7 @@
           };
       in rec {
         apps = rec {
-          default = pythoneda-external-artf-flakeutils-default;
-          pythoneda-external-artf-flakeutils-default =
-            pythoneda-external-artf-flakeutils-python312;
-          pythoneda-external-artf-flakeutils-python311 = shared.app-for {
-            package =
-              self.packages.${system}.pythoneda-external-artf-flakeutils-python311;
-            inherit entrypoint;
-          };
+          default = pythoneda-external-artf-flakeutils-python312;
           pythoneda-external-artf-flakeutils-python39 = shared.app-for {
             package =
               self.packages.${system}.pythoneda-external-artf-flakeutils-python39;
@@ -222,13 +215,16 @@
               self.packages.${system}.pythoneda-external-artf-flakeutils-python312;
             inherit entrypoint;
           };
+          pythoneda-external-artf-flakeutils-python313 = shared.app-for {
+            package =
+              self.packages.${system}.pythoneda-external-artf-flakeutils-python313;
+            inherit entrypoint;
+          };
         };
         defaultApp = apps.default;
         defaultPackage = packages.default;
         devShells = rec {
-          default = pythoneda-external-artf-flakeutils-default;
-          pythoneda-external-artf-flakeutils-default =
-            pythoneda-external-artf-flakeutils-python312;
+          default = pythoneda-external-artf-flakeutils-python312;
           pythoneda-external-artf-flakeutils-python39 = shared.devShell-for {
             banner = "${
                 pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python39
@@ -301,9 +297,7 @@
           };
         };
         packages = rec {
-          default = pythoneda-external-artf-flakeutils-default;
-          pythoneda-external-artf-flakeutils-default =
-            pythoneda-external-artf-flakeutils-python312;
+          default = pythoneda-external-artf-flakeutils-python312;
           pythoneda-external-artf-flakeutils-python39 =
             pythoneda-external-artf-flakeutils-for {
               python = pkgs.python39;
