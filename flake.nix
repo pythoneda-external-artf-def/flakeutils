@@ -100,8 +100,6 @@
                 pythoneda-shared-pythonlang-banner.version;
               pythonedaSharedPythonlangDomain =
                 pythoneda-shared-pythonlang-domain.version;
-
-              package = builtins.replaceStrings [ "." ] [ "/" ] pythonpackage;
               src = pyprojectTomlTemplate;
             };
             bannerTemplateFile =
