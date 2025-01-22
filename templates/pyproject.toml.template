@@ -13,7 +13,7 @@ name = "@pname@"
 version = "@version@"
 description = "@desc@"
 authors = [ @authors@ ]
-packages = [{include = "@package@"}]
+packages = [{include = "pythoneda"}]
 
 [tool.poetry.dependencies]
 python = "^@pythonMajorMinorVersion@"
